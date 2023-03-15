@@ -24,3 +24,9 @@ print("Last 300 letters of the data")
 print("-------")
 display(data[-300:])
 print("-------")
+
+# Function to split data by linebreak
+def split_to_sentences(data):
+    sentences = data.split("\n")
+    sentences = [s.strip() for s in sentences]
+    return sentences
