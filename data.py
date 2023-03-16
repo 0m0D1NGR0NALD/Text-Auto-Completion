@@ -31,3 +31,12 @@ def split_to_sentences(data):
     sentences = [s.strip() for s in sentences]
     sentences = [s for s in sentences if len(s) > 0]
     return sentences
+
+# Function to split sentence into list of words
+def split_sentences(sentences):
+    split_sentences = []
+    for sentence in sentences:
+        sentence = sentence.lower()
+        split_sentence = nltk.word_tokenize(sentence)
+        split_sentences.append(split_sentence)
+     return split_sentences
