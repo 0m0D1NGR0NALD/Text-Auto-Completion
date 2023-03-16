@@ -49,7 +49,7 @@ def split_sentences(sentences):
         # Add tokens to list
         split_sentences.append(split_sentence)
      # Return list of tokenized sentences
-     return split_sentences
+    return split_sentences
 
 # Function to get split sentences
 def get_split_sentences(data):
@@ -74,10 +74,8 @@ train_data = tokenized_data[0:split_size]
 test_data = tokenized_data[split_size:]
 
 # Print verification statements
-print(f"{len(tokenized_data)} items have been split into 
-        {len(train_data)} items for the train set and 
-        {len(test_data)} items for the test set.")
+print(f"{len(tokenized_data)} items have been split into {len(train_data)} items for the train set and {len(test_data)} items for the test set.")
 
 print("First train sample:",train_data[0])
 
-print("First test sample:",test_data[0)
+print("First test sample:",test_data[0])
