@@ -38,11 +38,17 @@ def split_to_sentences(data):
 
 # Function to split sentence into list of words
 def split_sentences(sentences):
+    # Initialize empty list
     split_sentences = []
+    # Loop through sentences
     for sentence in sentences:
+        # Convert items to lowercase for uniformity
         sentence = sentence.lower()
+        # Separate sentence into a list of tokens
         split_sentence = nltk.word_tokenize(sentence)
+        # Add tokens to list
         split_sentences.append(split_sentence)
+     # Return list of tokenized sentences
      return split_sentences
 
 # Function to get split sentences
