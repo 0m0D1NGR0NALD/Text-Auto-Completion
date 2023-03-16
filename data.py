@@ -72,3 +72,8 @@ split_size = int(len(tokenized_data)*0.8)
 train_data = tokenized_data[0:split_size]
 # Define test set
 test_data = tokenized_data[split_size:]
+
+# Print verification statement
+print(f"{len(tokenized_data)} items have been split into 
+        {len(train_data)} items for the train set and 
+        {len(test_data)} items for the test set.")
