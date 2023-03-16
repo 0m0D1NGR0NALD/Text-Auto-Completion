@@ -27,9 +27,13 @@ print("-------")
 
 # Function to split data by linebreak
 def split_to_sentences(data):
+    # Split data using linebreak to create list of sentences
     sentences = data.split("\n")
+    # Remove any white spaces in split data >> sentences
     sentences = [s.strip() for s in sentences]
+    # Elimnate empty items in list of sentences
     sentences = [s for s in sentences if len(s) > 0]
+    # Return list of sentences
     return sentences
 
 # Function to split sentence into list of words
