@@ -40,3 +40,9 @@ def split_sentences(sentences):
         split_sentence = nltk.word_tokenize(sentence)
         split_sentences.append(split_sentence)
      return split_sentences
+
+# Function to get split sentences
+def get_split_sentences(data):
+    sentences = split_to_sentences(data)
+    split_sentences = split_sentences(sentences)
+    return split_sentences
