@@ -59,3 +59,16 @@ def get_split_sentences(data):
     split_sentences = split_sentences(sentences)
     # Return tokenized data
     return split_sentences
+
+# Obtain tokenized data
+tokenized_data = get_split_sentences(data)
+# Set random seed
+random.seed(24)
+# Shuffle data
+random.shuffle(tokenized_data)
+# Set split ratio
+split_size = int(len(tokenized_data)*0.8)
+# Define train set
+train_data = tokenized_data[0:split_size]
+# Define test set
+test_data = tokenized_data[split_size:]
