@@ -78,4 +78,6 @@ print(f"{len(tokenized_data)} items have been split into
         {len(train_data)} items for the train set and 
         {len(test_data)} items for the test set.")
 
-print("First training sample:",train_data[0])
+print("First train sample:",train_data[0])
+
+print("First test sample:",test_data[0)
