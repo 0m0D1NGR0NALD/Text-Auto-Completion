@@ -53,6 +53,9 @@ def split_sentences(sentences):
 
 # Function to get split sentences
 def get_split_sentences(data):
+    # Split data
     sentences = split_to_sentences(data)
+    # Tokenize split data
     split_sentences = split_sentences(sentences)
+    # Return tokenized data
     return split_sentences
