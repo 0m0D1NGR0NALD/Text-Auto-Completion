@@ -4,6 +4,8 @@ import numpy as np
 import pandas as pd
 from IPython.display import display
 import nltk
+from nltk.tokenize import word_tokenize
+nltk.download('punkt')
 nltk.data.path.append('.')
 
 # Opening data file to read data in file
@@ -45,7 +47,7 @@ def split_sentences(sentences):
         # Convert items to lowercase for uniformity
         sentence = sentence.lower()
         # Separate sentence into a list of tokens
-        split_sentence = nltk.word_tokenize(sentence)
+        split_sentence = word_tokenize(sentence)
         # Add tokens to list
         split_sentences.append(split_sentence)
      # Return list of tokenized sentences
@@ -56,9 +58,9 @@ def get_split_sentences(data):
     # Split data
     sentences = split_to_sentences(data)
     # Tokenize split data
-    split_sentences = split_sentences(sentences)
+    split_sentence = split_sentences(sentences)
     # Return tokenized data
-    return split_sentences
+    return split_sentence
 
 # Obtain tokenized data
 tokenized_data = get_split_sentences(data)
