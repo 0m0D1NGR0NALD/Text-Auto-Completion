@@ -62,14 +62,19 @@ test_data = tokenized_data[split_size:]
 
 # Function to count words to discover frequently used words
 def count_words(tokenized_data):
+    # Initialize dictionary of each word and it's count
     word_counter = {}
+    # Loop through tokenized data
     for sentence in range(len(tokenized_data)):
         # Loop through tokens in the sentence
         for token in (tokenized_data[sentence]):
             if token not in word_counter.keys():
+                # Set initial count to 1
                 word_counter[token] = 1
             else:
+                # Cummulative sum of similar word
                 word_counter[token] += 1
+    # Return dictionary of words and their frequency
     return word_counter
 
 # Function to select frequently used words
