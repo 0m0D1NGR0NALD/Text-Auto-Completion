@@ -12,21 +12,6 @@ nltk.data.path.append('.')
 with open("en_US.twitter.txt", "r") as file:
     data = file.read()
 
-# Print data type
-print("Data type:", type(data))
-# Print number of letters in dataset
-print("Number of letters:", len(data))
-# Display first 240 letters
-print("First 240 letters of the data")
-print("-------")
-display(data[0:240])
-print("-------")
-# Display last 240 letters
-print("Last 240 letters of the data")
-print("-------")
-display(data[-240:])
-print("-------")
-
 # Function to split data by linebreak
 def split_to_sentences(data):
     # Split data using linebreak to create list of sentences
@@ -74,13 +59,6 @@ split_size = int(len(tokenized_data)*0.8)
 train_data = tokenized_data[0:split_size]
 # Define test set
 test_data = tokenized_data[split_size:]
-
-# Print verification statements
-print(f"{len(tokenized_data)} items have been split into {len(train_data)} items for the train set and {len(test_data)} items for the test set.")
-
-print("First train sample:",train_data[0])
-
-print("First test sample:",test_data[0])
 
 # Function to count words to discover frequently used words
 def count_words(tokenized_data):
