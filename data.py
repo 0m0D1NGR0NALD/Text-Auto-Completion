@@ -79,11 +79,16 @@ def count_words(tokenized_data):
 
 # Function to select frequently used words
 def get_words_by_threshold_frequency(tokenized_data,threshold):
+    # Initialize list of frequently used words
     common_vocabulary = []
+    # Obtain and store dictionary of frequently used words
     word_count = count_words(tokenized_data)
+    # Loop through dictionary of frequently used words
     for word,count in word_count.items():
         if count >= threshold:
+        # If word frequency is greater than or equal to threshold; append to list
             common_vocabulary.append(word)
+    # Return list of words whose frequency is greater than threshold
     return common_vocabulary
 
 # Function to replace unknown words
