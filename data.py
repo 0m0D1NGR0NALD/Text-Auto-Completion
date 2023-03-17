@@ -93,11 +93,14 @@ def get_words_by_threshold_frequency(tokenized_data,threshold):
 
 # Function to replace unknown words
 def replace_oov_by_unk_words(tokenized_data,vocabulary,unknown_token="<unk>"):
+    # Eliminate repetitions in list of vocabulary
     vocabulary = set(vocabulary)
+    # Initialize list of replaced unknown words
     replaced_tokenized_data = []
 
     # Loop through tokenized sentences
     for sentence in tokenized_data:
+        # Initialize list for words in vocabulary as well as unknown words
         replaced_data = []
         # Loop through tokens
         for token in sentence:
@@ -106,5 +109,7 @@ def replace_oov_by_unk_words(tokenized_data,vocabulary,unknown_token="<unk>"):
                 replaced_data.append(token)
             else:
                 replaced_data.append(unknown_token)
+        # Append inner list to the outer list
         replaced_tokenized_data.append(replaced_data)
+    # Return genealized list with replaced unknown words
     return replaced_tokenized_data
