@@ -113,3 +113,19 @@ def replace_oov_by_unk_words(tokenized_data,vocabulary,unknown_token="<unk>"):
         replaced_tokenized_data.append(replaced_data)
     # Return genealized list with replaced unknown words
     return replaced_tokenized_data
+    
+    # Function to process train and test set
+    def preprocess_data(train_data,test_data,threshold):
+    vocabulary = get_words_by_threshold_frequency(train_data,threshold)
+    replaced_train_data = []
+    replaced_test_data = []
+
+    # Replace less common words with "<unk>" in train set
+    for sentence in range(len(train_data)):
+        replaced_data_trainset = []
+        for word in range(len(train_data[sentence])):
+            if train_data[sentence][word] in vocabulary:
+                replaced_data_trainset.append(train_data[sentence][word])
+            else:
+                replaced_data_trainset.append("<unk>")
+        replaced_train_data.append(replaced_data_trainset)
