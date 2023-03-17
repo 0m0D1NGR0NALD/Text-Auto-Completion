@@ -80,3 +80,21 @@ def get_words_by_threshold_frequency(tokenized_data,threshold):
         if count >= threshold:
             common_vocabulary.append(word)
     return common_vocabulary
+
+# Function to replace unknown words
+def replace_oov_by_unk_words(tokenized_data,vocabulary,unknown_token="<unk>"):
+    vocabulary = set(vocabulary)
+    replaced_tokenized_data = []
+
+    # Loop through tokenized sentences
+    for sentence in tokenized_data:
+        replaced_data = []
+        # Loop through tokens
+        for token in sentence:
+            # Check if token in commonly used words
+            if token in vocabulary:
+                replaced_data.append(token)
+            else:
+                replaced_data.append(unknown_token)
+        replaced_tokenized_data.append(replaced_data)
+    return replaced_tokenized_data
