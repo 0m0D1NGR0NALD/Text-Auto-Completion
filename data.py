@@ -138,7 +138,7 @@ def preprocess_data(train_data,test_data,threshold):
                 replaced_data_testset.append(test_data[sentence][word])
             else:
                 replaced_data_testset.append("<unk>")
-        replaced_test_data.append(replaced_test_data)
+        replaced_test_data.append(replaced_data_testset)
     return replaced_train_data,replaced_test_data,vocabulary
     
 thresh = 2
