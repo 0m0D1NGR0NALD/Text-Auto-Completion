@@ -81,3 +81,15 @@ print(f"{len(tokenized_data)} items have been split into {len(train_data)} items
 print("First train sample:",train_data[0])
 
 print("First test sample:",test_data[0])
+
+# Function to count words to discover frequently used words
+def count_words(tokenized_data):
+    word_counter = {}
+    for sentence in range(len(tokenized_data)):
+        # Loop through tokens in the sentence
+        for token in (tokenized_data[sentence]):
+            if token not in word_counter.keys():
+                word_counter[token] = 1
+            else:
+                word_counter[token] += 1
+    return word_counter
