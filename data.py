@@ -140,17 +140,3 @@ def preprocess_data(train_data,test_data,threshold):
                 replaced_data_testset.append("<unk>")
         replaced_test_data.append(replaced_data_testset)
     return replaced_train_data,replaced_test_data,vocabulary
-    
-thresh = 2
-processed_train_data, processed_test_data, vocabulary = preprocess_data(train_data, test_data, thresh)
-
-print("First preprocessed training sample:")
-print(processed_train_data[0])
-print()
-print("First preprocessed test sample:")
-print(processed_test_data[0])
-print()
-print("First 10 vocabulary:")
-print(vocabulary[0:10])
-print()
-print("Size of vocabulary:", len(vocabulary))
