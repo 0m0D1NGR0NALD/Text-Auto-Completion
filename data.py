@@ -1,11 +1,10 @@
-import math
 import random
 import numpy as np
 import pandas as pd
 from IPython.display import display
 import nltk
 from nltk.tokenize import word_tokenize
-nltk.download('punkt')
+nltk.download('punkt') # Run command once
 nltk.data.path.append('.')
 
 # Opening data file to read data in file
