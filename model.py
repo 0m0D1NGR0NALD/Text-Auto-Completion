@@ -30,3 +30,14 @@ def estimate_probability(word,previous_n_gram,n_gram_counts,n_plus1_gram_counts,
     numerator = n_plus1_gram_count + k
     probability = numerator/denominator
     return probability
+
+def estimate_probabilities(previous_n_gram,n_gram_counts,n_plus1_gram_counts,vocabulary,k=1.0):
+    previous_n_gram = previous_n_gram
+    # Add <e> <unk> to the vocabulary <s> is not needed since it should not appear as the next word
+    vocabulary = vocabulary + ["<e>","<unk>"]
+    vocabulary_size = len(vocabulary)
+    probabilities = {}
+    for word in vocabulary:
+        probability = estimate_probability(word,previous_n_gram,n_gram_counts,n_plus1_gram_counts,vocabulary_size,k=k)
+        probabilities[word] = probability
+    return probabilities
