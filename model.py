@@ -24,19 +24,25 @@ def count_n_grams(data,n,start_token="<s>",end_token="<e>"):
         # Return dictionary of n_grams and their cummulative count
         return n_grams
         
+# Function that calculates the numerator and denominator to obtain estimated probability of interest       
 def estimate_probability(word,previous_n_gram,n_gram_counts,n_plus1_gram_counts,vocabulary_size,k=1.0):
+    # Check if previous n-gram is of datatype "list"
     if type(previous_n_gram) == list:
+        # Convert list to tuple
         previous_n_grams = tuple(previous_n_gram)
     else:
+        # Otherwise, first convert to list then to tuple
         previous_n_grams = tuple([previous_n_gram])
     previous_n_gram_count = n_gram_counts.get(previous_n_grams,0)
-    # Apply k-smoothing to handle zero counts
+    # Apply k-smoothing to handle zero counts in denominator
     denominator = previous_n_gram_count + vocabulary_size*1
     n_plus1_gram = previous_n_grams + tuple([word])
     n_plus1_gram_count = n_plus1_gram_counts.get(n_plus1_gram,0)
-    # Apply smoothing
+    # Apply smoothing to numerator
     numerator = n_plus1_gram_count + k
+    # Calculating probability
     probability = numerator/denominator
+    # Return calculated probability
     return probability
 
 def estimate_probabilities(previous_n_gram,n_gram_counts,n_plus1_gram_counts,vocabulary,k=1.0):
