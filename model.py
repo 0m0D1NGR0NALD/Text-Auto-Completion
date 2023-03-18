@@ -92,3 +92,16 @@ def calculate_perplexity(sentences,n_gram_counts,n_plus1_gram_counts,vocabulary_
     perplexity = float(perplexity)
 
     return perplexity
+
+def suggest_a_word(previous_n_gram,n_gram_counts,n_plus1_gram_counts,vocabulary,k=1.0,start_with=None):
+    probabilities = estimate_probabilities(previous_n_gram,n_gram_counts,n_plus1_gram_counts,vocabulary,k=k)
+    suggestion = None
+    max_prob = 0
+    for word,prob in probabilities.items():
+        if start_with != None:
+            if word.startswith(start_with)==False:
+                continue
+        if prob > max_prob:
+            suggestion = word
+            max_prob = prob
+    return suggestion,max_prob
