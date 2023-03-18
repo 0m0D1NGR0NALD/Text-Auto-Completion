@@ -67,3 +67,9 @@ def make_count_matrix(n_plus1_gram_counts, vocabulary):
         count_matrix[i,j] = count
     count_matrix = pd.DataFrame(count_matrix,index=n_grams,columns=vocabulary)
     return count_matrix
+
+def make_probability_matrix(n_plus1_gram_counts,vocabulary,k):
+    count_matrix = make_count_matrix(n_plus1_gram_counts,vocabulary)
+    count_matrix += k
+    prob_matrix = count_matrix.div(count_matrix.sum(axis=1),axis=0)
+    return prob_matrix
