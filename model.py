@@ -1,3 +1,6 @@
+import pandas as pd
+import numpy as np
+
 def count_n_grams(data,n,start_token="<s>",end_token="<e>"):
     n_grams = {}
     for sentence in range(len(data)):
@@ -41,3 +44,26 @@ def estimate_probabilities(previous_n_gram,n_gram_counts,n_plus1_gram_counts,voc
         probability = estimate_probability(word,previous_n_gram,n_gram_counts,n_plus1_gram_counts,vocabulary_size,k=k)
         probabilities[word] = probability
     return probabilities
+
+def make_count_matrix(n_plus1_gram_counts, vocabulary):
+    vocabulary = vocabulary + ["<e>","<unk>"]
+    n_grams = []
+    for n_plus1_gram in n_plus1_gram_counts.keys():
+        n_gram = n_plus1_gram[0:-1]
+        n_grams.append(n_gram)
+    n_grams = list(set(n_grams))
+    row_index = {n_gram:i for i,n_gram in enumerate(n_grams)}
+    col_index = {word:j for j,word in enumerate(vocabulary)}
+    nrow = len(n_grams)
+    ncol = len(vocabulary)
+    count_matrix = np.zeros((nrow,ncol))
+    for n_plus1_gram,count in n_plus1_gram_counts.items():
+        n_gram = n_plus1_gram[0:-1]
+        word = n_plus1_gram[-1]
+        if word not in vocabulary:
+            continue
+        i = row_index[n_gram]
+        j = col_index[word]
+        count_matrix[i,j] = count
+    count_matrix = pd.DataFrame(count_matrix,index=n_grams,columns=vocabulary)
+    return count_matrix
