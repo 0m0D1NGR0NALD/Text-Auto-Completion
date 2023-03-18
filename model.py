@@ -73,3 +73,22 @@ def make_probability_matrix(n_plus1_gram_counts,vocabulary,k):
     count_matrix += k
     prob_matrix = count_matrix.div(count_matrix.sum(axis=1),axis=0)
     return prob_matrix
+
+def calculate_perplexity(sentences,n_gram_counts,n_plus1_gram_counts,vocabulary_size,k=1.0):
+    n = len(list(n_gram_counts.keys())[0])
+    sentence = ["<s>"]*n + sentences + ["<e>"]
+    sentence = tuple(sentence)
+
+    N = len(sentence)
+    product_pi = 1.0
+    for i in range(n,N):
+        n_gram = sentence[i-n]
+        word = sentence[i]
+        probability = estimate_probability(word,n_gram,n_gram_counts,n_plus1_gram_counts,vocabulary_size,k)
+        product_pi *= 1/probability
+
+    # Nth root of the product
+    perplexity = product_pi**(1/float(N))
+    perplexity = float(perplexity)
+
+    return perplexity
