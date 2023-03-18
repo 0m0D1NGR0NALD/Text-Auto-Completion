@@ -45,15 +45,21 @@ def estimate_probability(word,previous_n_gram,n_gram_counts,n_plus1_gram_counts,
     # Return calculated probability
     return probability
 
+# Function to calculate probabilities for all possible words
 def estimate_probabilities(previous_n_gram,n_gram_counts,n_plus1_gram_counts,vocabulary,k=1.0):
     previous_n_gram = previous_n_gram
     # Add <e> <unk> to the vocabulary <s> is not needed since it should not appear as the next word
     vocabulary = vocabulary + ["<e>","<unk>"]
     vocabulary_size = len(vocabulary)
+    # Instantiate dictionary of probabilities
     probabilities = {}
+    # Loop through vocabulary
     for word in vocabulary:
+        # Obtain estimated probability for each word
         probability = estimate_probability(word,previous_n_gram,n_gram_counts,n_plus1_gram_counts,vocabulary_size,k=k)
+        # Append word and it's probability to dictionary
         probabilities[word] = probability
+    # Return estimated probabilities
     return probabilities
 
 def make_count_matrix(n_plus1_gram_counts, vocabulary):
