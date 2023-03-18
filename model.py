@@ -1,10 +1,14 @@
 import pandas as pd
 import numpy as np
 
+# Building an N-gram based language models
+
+# Function that computes n-grams count for each arbitrary n number
 def count_n_grams(data,n,start_token="<s>",end_token="<e>"):
+    # Initialize dictionary for n_grams and their cummulative count
     n_grams = {}
+    # Loop through data
     for sentence in range(len(data)):
-        print(sentence)
         sentences = [start_token]*n + list(data[sentence]) + [end_token]
         sentences = tuple(sentences)
         for i in range(0,len(sentences)-n+1):
@@ -15,8 +19,9 @@ def count_n_grams(data,n,start_token="<s>",end_token="<e>"):
                 # Increment count
                 n_grams[n_gram] += 1
             else:
-                # if not set count to one
+                # if not, set count to one
                 n_grams[n_gram] = 1
+        # Return dictionary of n_grams and their cummulative count
         return n_grams
         
 def estimate_probability(word,previous_n_gram,n_gram_counts,n_plus1_gram_counts,vocabulary_size,k=1.0):
