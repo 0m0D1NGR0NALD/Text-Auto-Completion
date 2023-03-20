@@ -14,3 +14,9 @@ def get_suggestions(previous_n_gram,n_gram_counts_list,vocabulary,k=1.0,start_wi
 
 minimum_freq = 2
 train_data_processed, test_data_processed, vocabulary = preprocess_data(train_data, test_data,minimum_freq)
+
+n_gram_counts_list = []
+for n in range(1,6):
+    print("Computing n-gram counts with n=",n, "...")
+    n_model_counts = count_n_grams(train_data_processed,n)
+    n_gram_counts_list.append(n_model_counts)
