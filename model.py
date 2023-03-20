@@ -62,6 +62,7 @@ def estimate_probabilities(previous_n_gram,n_gram_counts,n_plus1_gram_counts,voc
     # Return estimated probabilities
     return probabilities
 
+# Function to create frequency matrix
 def make_count_matrix(n_plus1_gram_counts, vocabulary):
     vocabulary = vocabulary + ["<e>","<unk>"]
     n_grams = []
@@ -85,6 +86,7 @@ def make_count_matrix(n_plus1_gram_counts, vocabulary):
     count_matrix = pd.DataFrame(count_matrix,index=n_grams,columns=vocabulary)
     return count_matrix
 
+# Function to calculate the probabilities of each word given the previous n-gram
 def make_probability_matrix(n_plus1_gram_counts,vocabulary,k):
     count_matrix = make_count_matrix(n_plus1_gram_counts,vocabulary)
     count_matrix += k
