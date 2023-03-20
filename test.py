@@ -1,4 +1,5 @@
 from data import train_data,test_data,preprocess_data
+from IPython.display import display
 
 # Function to predict multiple suggestions by looping over various n-gram models
 def get_suggestions(previous_n_gram,n_gram_counts_list,vocabulary,k=1.0,start_with=None):
