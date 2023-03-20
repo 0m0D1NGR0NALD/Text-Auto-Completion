@@ -93,6 +93,7 @@ def make_probability_matrix(n_plus1_gram_counts,vocabulary,k):
     prob_matrix = count_matrix.div(count_matrix.sum(axis=1),axis=0)
     return prob_matrix
 
+# Function to implement loss function as perplexity score
 def calculate_perplexity(sentences,n_gram_counts,n_plus1_gram_counts,vocabulary_size,k=1.0):
     n = len(list(n_gram_counts.keys())[0])
     sentence = ["<s>"]*n + sentences + ["<e>"]
@@ -112,6 +113,7 @@ def calculate_perplexity(sentences,n_gram_counts,n_plus1_gram_counts,vocabulary_
 
     return perplexity
 
+# Function to define auto-complete system 
 def suggest_a_word(previous_n_gram,n_gram_counts,n_plus1_gram_counts,vocabulary,k=1.0,start_with=None):
     probabilities = estimate_probabilities(previous_n_gram,n_gram_counts,n_plus1_gram_counts,vocabulary,k=k)
     suggestion = None
