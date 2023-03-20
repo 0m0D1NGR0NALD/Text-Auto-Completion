@@ -21,3 +21,8 @@ for n in range(1,6):
     print("Computing n-gram counts with n=",n, "...")
     n_model_counts = count_n_grams(train_data_processed,n)
     n_gram_counts_list.append(n_model_counts)
+    
+previous_tokens = ["i","am","to"]
+tmp_suggest1 = get_suggestions(previous_tokens, n_gram_counts_list, vocabulary, k=1.0)
+print(f"The previous words are {previous_tokens}, the suggestions are:")
+display(tmp_suggest1)
