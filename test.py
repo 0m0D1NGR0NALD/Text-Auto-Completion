@@ -1,3 +1,5 @@
+from data import train_data,test_data,preprocess_data
+
 # Function to predict multiple suggestions by looping over various n-gram models
 def get_suggestions(previous_n_gram,n_gram_counts_list,vocabulary,k=1.0,start_with=None):
     model_counts = len(n_gram_counts_list)
@@ -9,3 +11,6 @@ def get_suggestions(previous_n_gram,n_gram_counts_list,vocabulary,k=1.0,start_wi
         suggestion = suggest_a_word(previous_n_gram,n_gram_counts,n_plus1_gram_counts,vocabulary,k=k,start_with=start_with)
         suggestions.append(suggestion)
     return suggestions
+
+minimum_freq = 2
+train_data_processed, test_data_processed, vocabulary = preprocess_data(train_data, test_data,minimum_freq)
