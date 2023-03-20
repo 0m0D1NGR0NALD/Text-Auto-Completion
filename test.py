@@ -26,3 +26,8 @@ previous_tokens = ["i","am","to"]
 tmp_suggest1 = get_suggestions(previous_tokens, n_gram_counts_list, vocabulary, k=1.0)
 print(f"The previous words are {previous_tokens}, the suggestions are:")
 display(tmp_suggest1)
+
+previous_tokens = ["hey", "how", "are", "you"]
+tmp_suggest2 = get_suggestions(previous_tokens, n_gram_counts_list, vocabulary, k=1.0)
+print(f"The previous words are {previous_tokens}, the suggestions are:")
+display(tmp_suggest2)
